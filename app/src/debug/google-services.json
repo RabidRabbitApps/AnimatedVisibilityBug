@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "920550777194",
+    "project_id": "gravie-member-app-dev",
+    "storage_bucket": "gravie-member-app-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920550777194:android:045e682c606a3ef9490513",
+        "android_client_info": {
+          "package_name": "com.gravie.member.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "920550777194-99ngsqqlspfmdjo9bmgli2gfc6olptnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgHPJUaDR6FfV8-Ru7ZLL_WAjxetiYB1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "920550777194-99ngsqqlspfmdjo9bmgli2gfc6olptnj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "920550777194-79qaetolaennvdmus7ujech049u113so.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gravie.internal"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

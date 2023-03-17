@@ -1,0 +1,141 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id 'de.mannodermaus.android-junit5'
+}
+apply from: "$rootDir/git-hooks/git-hooks.gradle"
+
+android {
+    compileSdk 33
+    buildToolsVersion = "33.0.1"
+
+    defaultConfig {
+        applicationId "com.sample.bugexample"
+        minSdk 28
+        targetSdk 33
+
+        versionCode project.hasProperty('version_code') ? project.property('version_code') as int : 1
+        versionName project.hasProperty('version_name') ? project.property('version_name') : "git rev-list HEAD --count".execute().text.trim()
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+
+        archivesBaseName = "BugExample-$versionName($versionCode)"
+    }
+
+    signingConfigs {
+        release { }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            debuggable true
+        }
+
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.3'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+    namespace 'com.sample.bugexample'
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation "androidx.compose.ui:ui:1.3.3"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.3.3"
+    implementation "androidx.compose.material:material:1.3.1"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.0'
+    debugImplementation "androidx.compose.ui:ui-tooling:1.3.3"
+
+    // Material 3
+    implementation "androidx.compose.material3:material3:$material_3_version"
+    implementation "androidx.compose.material3:material3-window-size-class:$material_3_version"
+
+    // Compose Navigation
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation "com.google.accompanist:accompanist-navigation-animation:$accompanist_version"
+
+    // Pager Layouts
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-pager-indicators:$accompanist_version"
+
+    // Compose ViewModels
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0")
+    implementation "androidx.compose.runtime:runtime-livedata:1.3.3"
+
+    // Compose ConstraintLayout
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    // System UI Controller
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+
+    // Networking
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
+    // Unit Testing
+    testImplementation 'io.mockk:mockk:1.13.4'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.9.2')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.2')
+    testImplementation('org.junit.jupiter:junit-jupiter-params:5.9.2')
+    testImplementation 'app.cash.turbine:turbine:0.12.1'
+
+    // Biometric Authentication
+    implementation "androidx.biometric:biometric:1.1.0"
+
+    // Google Play Core Library
+    implementation 'com.google.android.play:core:1.10.3'
+    implementation 'com.google.android.play:core-ktx:1.8.1'
+
+    // Splash Screen
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
+    // Document File
+    implementation 'androidx.documentfile:documentfile:1.0.1'
+
+    // Swipe to Refresh
+    implementation "com.google.accompanist:accompanist-swiperefresh:$accompanist_version"
+}

@@ -1,0 +1,24 @@
+task copyGitHooks(type: Copy) {
+    description 'Copies the git hooks from git-hooks/script/ to the .git folder.'
+    from("${rootDir}/git-hooks/script") {
+        include '**/*.sh'
+        rename '(.*).sh', '$1'
+    }
+    into "${rootDir}/.git/hooks"
+}
+
+task installGitHooks(type: Exec) {
+    description 'Installs the pre-commit git hooks from git-hooks/'
+    group 'git hooks'
+    workingDir rootDir
+    commandLine 'chmod'
+    args '+x', '.git/hooks/pre-commit'
+    dependsOn copyGitHooks
+    doLast {
+        logger.info('Git hook installed successfully.')
+    }
+}
+
+afterEvaluate {
+    tasks['assembleDebug'].dependsOn installGitHooks
+}

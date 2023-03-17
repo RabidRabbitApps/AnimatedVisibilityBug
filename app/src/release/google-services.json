@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "956251420771",
+    "project_id": "pc-api-8057708014217955082-733",
+    "storage_bucket": "pc-api-8057708014217955082-733.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956251420771:android:49c1e7df0027b385356056",
+        "android_client_info": {
+          "package_name": "com.gravie.member"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956251420771-spoltdisgo27dipmdotaod2o05ajj63u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gravie.member",
+            "certificate_hash": "8f412d456073b13e22f565e32540e7e47d912d88"
+          }
+        },
+        {
+          "client_id": "956251420771-05ifs83jrkeplupudvhqvru6lt64o955.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy1TSbhvKea5_yPJ-idL3xYNNas4HfC7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956251420771-05ifs83jrkeplupudvhqvru6lt64o955.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
