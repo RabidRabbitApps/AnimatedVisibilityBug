@@ -1,13 +1,16 @@
 package com.sample.bugexample.android
 
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.WindowCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.sample.bugexample.ui.screens.SampleScreen
@@ -21,13 +24,6 @@ class MainActivity : FragmentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        window.apply {
-            setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
-            setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
-        }
-
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
         setContent {
             BugTheme {
                 val systemUiController = rememberSystemUiController()
@@ -37,7 +33,11 @@ class MainActivity : FragmentActivity() {
                     systemUiController.setStatusBarColor(color = Color.Transparent, darkIcons = darkIcons)
                 }
 
-                SampleScreen()
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Box(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
+                        SampleScreen()
+                    }
+                }
             }
         }
     }

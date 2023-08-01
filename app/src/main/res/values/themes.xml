@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.PagerSplash" parent="Theme.SplashScreen">
+    <style name="Theme.BugExampleSplash" parent="Theme.SplashScreen">
         <item name="postSplashScreenTheme">@style/Theme.HorizontalPager</item>
     </style>
 
